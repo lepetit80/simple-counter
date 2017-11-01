@@ -1,0 +1,76 @@
+<!-- <div class="counter" [style.backgroundColor]="colorByValue()">{{curVal}}</div> -->
+<!-- <div class="row buttons">
+  <button type="button" (click)="inc()">+</button>
+  <button type="button" (click)="dec()">-</button>
+</div> -->
+<!-- <div class="row manual-action">
+  <label for="manual-val">수동 수정:</label>
+  <input type="number" id="manual-val" [(ngModel)]="manualVal">
+  <button type="button" (click)="setValueForcibly()">강제 저장</button>
+</div> -->
+
+<hr>
+<h2>파이프</h2>
+<p>{{myName | uppercase | honor}}</p>
+
+
+<hr>
+<h2>속성 지시자</h2>
+<div [ngClass]="myObj">앵귤러 ngClass 속성 지시자</div>
+<p [ngStyle]="styleConf">앵귤러 ngStyle 속성 지시자</p>
+
+<hr>
+<h2>counter</h2>
+
+<div class="counter" [style.backgroundColor]="colorByValue()">{{curVal}}</div>
+<div class="row buttons">
+  <button type="button" (click)="inc()">+</button>
+  <button type="button" (click)="dec()">-</button>
+</div>
+<div class="row manual-action">
+  <label for="manual-val">수동 수정:</label>
+  <input type="number" id="manual-val" [(ngModel)]="manualVal">
+  <button type="button" (click)="setValueForcibly()">강제 저장</button>
+</div>
+
+<hr>
+<h2>*ngIf</h2>
+<div>
+  <button type="button" (click)="isShow = !isShow">전환</button>
+  <label *ngIf="isShow; else hiding">You are special!</label>
+  <ng-template #hiding>
+    <label>I 'm so depressed</label>
+  </ng-template>
+</div>
+
+<div *ngIf="member">
+  <p>Name: {{member.name}}</p>
+  <p>Email: {{member.email}}</p>
+</div>
+
+<hr>
+<h2>*ngFor</h2>
+<ul>
+  <li *ngFor="let ani of animals; let idx = index">
+    {{idx + 1}} {{ani}}
+  </li>
+</ul>
+
+<hr>
+<h2>*ngSwitch</h2>
+
+<select [(ngModel)]="animal">
+  <option value="">No!</option>
+  <option *ngFor="let ani of animals" [value]="ani">{{ani}}</option>
+</select>
+
+<span [ngSwitch]="animal">
+  <!-- <span *ngSwitchCase="'Dog'">멍멍</span>
+  <span *ngSwitchCase="'Cat'">야옹</span>
+  <span *ngSwitchCase="'Cock'">꼬끼오</span>
+  <span *ngSwitchDefault>에헴!</span> -->
+  <ng-container *ngSwitchCase="'Dog'">멍멍</ng-container>
+  <ng-container *ngSwitchCase="'Cat'">야옹</ng-container>
+  <ng-container *ngSwitchCase="'Cock'">꼬끼오</ng-container>
+  <ng-container *ngSwitchDefault>에헴!</ng-container>
+</span>
